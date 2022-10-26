@@ -6,7 +6,22 @@ import Table from 'react-bootstrap/Table';
 import { PersonEntityInterface } from '../../interface';
 import * as service from '../../service';
 
-export const List = () => {
+export const List = () => (
+  <>
+    <Link to="create">
+      <Button
+        type="button"
+        variant="success"
+        className="mb-3"
+      >
+        Criar
+      </Button>
+    </Link>
+    <ListTable />
+  </>
+);
+
+const ListTable = () => {
   interface ListState {
     readonly isLoading: boolean;
     readonly people?: PersonEntityInterface[];
@@ -30,36 +45,25 @@ export const List = () => {
   if (!people) return null;
 
   return (
-    <>
-      <Link to="create">
-        <Button
-          type="button"
-          variant="success"
-          className="mb-3"
-        >
-          Criar
-        </Button>
-      </Link>
-      <Table striped bordered>
-        <thead>
+    <Table striped bordered>
+      <thead>
+        <tr>
+          <th></th>
+          <th>ID</th>
+          <th>Nome</th>
+          <th>Sobrenome</th>
+        </tr>
+      </thead>
+      <tbody>
+        {people.map((person) => (          
           <tr>
-            <th></th>
-            <th>ID</th>
-            <th>Nome</th>
-            <th>Sobrenome</th>
+            <td></td>
+            <td>{person.id}</td>
+            <td>{person.name}</td>
+            <td>{person.surname}</td>
           </tr>
-        </thead>
-        <tbody>
-          {people.map((person) => (          
-            <tr>
-              <td></td>
-              <td>{person.id}</td>
-              <td>{person.name}</td>
-              <td>{person.surname}</td>
-            </tr>
-          ))}
-        </tbody>
-      </Table>
-    </>
+        ))}
+      </tbody>
+    </Table>
   );
 };
