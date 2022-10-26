@@ -2,6 +2,8 @@ import { useEffect, useState, useCallback } from 'react';
 import { Link } from 'react-router-dom';
 import Button from 'react-bootstrap/Button';
 import Table from 'react-bootstrap/Table';
+import { faEdit, faBan } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 import { PersonEntityInterface } from '../../interface';
 import * as service from '../../service';
@@ -57,7 +59,20 @@ const ListTable = () => {
       <tbody>
         {people.map((person) => (          
           <tr>
-            <td></td>
+            <td width="200">
+              <div className="d-flex justify-content-center">
+                <Link to={`update/${person.id}`} className="mx-1">
+                  <FontAwesomeIcon icon={faEdit} /> Editar
+                </Link>
+                <Button
+                  type="button"
+                  className="mx-1 p-0 border-0"
+                  variant="link"
+                >
+                  <FontAwesomeIcon icon={faBan} /> Remover
+                </Button>
+              </div>
+            </td>
             <td>{person.id}</td>
             <td>{person.name}</td>
             <td>{person.surname}</td>
