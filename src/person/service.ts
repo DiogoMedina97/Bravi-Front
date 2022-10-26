@@ -24,3 +24,8 @@ export const update = async (id: number, dto: CreateDTO)  => {
   const res = await axios.patch(`${REACT_APP_API_URL}/person/${id}`, dto);
   return res.data as PersonEntityInterface;
 };
+
+export const remove = async (id: number)  => {
+  const res = await axios.delete(`${REACT_APP_API_URL}/person/${id}`);
+  return res.data as boolean;
+};

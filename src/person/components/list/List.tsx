@@ -40,6 +40,12 @@ const ListTable = () => {
     loadData().catch((err) => console.log(err));
   }, [loadData]);
 
+  const onRemove = useCallback((id: number) => async () => {
+    await service.remove(id);
+    // force refresh
+    await loadData();
+  }, [loadData]);
+
   const { isLoading, people } = state;
 
   if (isLoading) return <>Carregando...</>;
@@ -68,6 +74,7 @@ const ListTable = () => {
                   type="button"
                   className="mx-1 p-0 border-0"
                   variant="link"
+                  onClick={onRemove(person.id)}
                 >
                   <FontAwesomeIcon icon={faBan} /> Remover
                 </Button>
