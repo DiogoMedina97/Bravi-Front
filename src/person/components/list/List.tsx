@@ -1,4 +1,6 @@
 import { useEffect, useState, useCallback } from 'react';
+import { Link } from 'react-router-dom';
+import Button from 'react-bootstrap/Button';
 import Table from 'react-bootstrap/Table';
 
 import { PersonEntityInterface } from '../../interface';
@@ -28,25 +30,36 @@ export const List = () => {
   if (!people) return null;
 
   return (
-    <Table striped bordered>
-      <thead>
-        <tr>
-          <th></th>
-          <th>ID</th>
-          <th>Nome</th>
-          <th>Sobrenome</th>
-        </tr>
-      </thead>
-      <tbody>
-        {people.map((person) => (          
+    <>
+      <Link to="create">
+        <Button
+          type="button"
+          variant="success"
+          className="mb-3"
+        >
+          Criar
+        </Button>
+      </Link>
+      <Table striped bordered>
+        <thead>
           <tr>
-            <td></td>
-            <td>{person.id}</td>
-            <td>{person.name}</td>
-            <td>{person.surname}</td>
+            <th></th>
+            <th>ID</th>
+            <th>Nome</th>
+            <th>Sobrenome</th>
           </tr>
-        ))}
-      </tbody>
-    </Table>
+        </thead>
+        <tbody>
+          {people.map((person) => (          
+            <tr>
+              <td></td>
+              <td>{person.id}</td>
+              <td>{person.name}</td>
+              <td>{person.surname}</td>
+            </tr>
+          ))}
+        </tbody>
+      </Table>
+    </>
   );
 };
