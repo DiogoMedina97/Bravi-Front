@@ -1,4 +1,4 @@
-# Bravi - Back
+# Bravi - Front
 
 ## .ENV
 Criar arquivo `.env` na raiz do projeto
