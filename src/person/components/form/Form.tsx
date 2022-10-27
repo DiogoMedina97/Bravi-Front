@@ -22,12 +22,13 @@ import { CreateDTO as ContactCreateDTO } from '../../../contact/dto';
 type FormValues = CreateDTO | UpdateDTO;
 
 interface PersonFormProps<T extends FormValues> {
+  readonly update?: boolean;
   readonly initialValues: T;
   readonly onSubmit: (values: T, formikHelpers: FormikHelpers<T>) => void;
 }
 
 export const PersonForm = <T extends FormValues>({
-  initialValues, onSubmit,
+  update=false, initialValues, onSubmit,
 }: PersonFormProps<T>) => (
   <Formik<T>
     validationSchema={schema}
@@ -53,7 +54,9 @@ export const PersonForm = <T extends FormValues>({
         <Contacts
           {...props}
         />
-        <Button type="submit" disabled={props.isSubmitting}>Criar</Button>
+        <Button type="submit" disabled={props.isSubmitting}>
+          {update ? 'Atualizar' : 'Criar'}
+        </Button>
       </Form>
     )}
   </Formik>

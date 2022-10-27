@@ -45,6 +45,7 @@ export const Update = () => {
 
   return (
     <PersonForm<FormValues>
+      update
       initialValues={person}
       onSubmit={onSubmit}
     />
