@@ -123,7 +123,7 @@ const ContactForm = <T extends FormValues>({
 }: ContactFormProps<T>) => {
   return (
     <Form.Group as={Row}>
-      <Col md={1}>
+      <Col md={1} className="d-flex align-items-center justify-content-center">
         <Button
           type="button"
           variant="danger"
