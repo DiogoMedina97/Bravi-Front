@@ -50,8 +50,6 @@ const ListTable = () => {
 
   if (isLoading) return <div>Carregando...</div>;
 
-  if (!people) return null;
-
   return (
     <Table striped bordered>
       <thead>
@@ -63,7 +61,7 @@ const ListTable = () => {
         </tr>
       </thead>
       <tbody>
-        {people.map((person) => (          
+        {Array.isArray(people) && people.length > 0 ? people.map((person) => (          
           <tr>
             <td width="200">
               <div className="d-flex justify-content-center">
@@ -84,7 +82,11 @@ const ListTable = () => {
             <td>{person.name}</td>
             <td>{person.surname}</td>
           </tr>
-        ))}
+        )) : (
+          <tr>
+            <td colSpan={4}>Nenhum usuário cadastrado</td>
+          </tr>
+        )}
       </tbody>
     </Table>
   );
