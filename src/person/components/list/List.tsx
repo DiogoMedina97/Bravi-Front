@@ -48,7 +48,7 @@ const ListTable = () => {
 
   const { isLoading, people } = state;
 
-  if (isLoading) return <>Carregando...</>;
+  if (isLoading) return <div>Carregando...</div>;
 
   if (!people) return null;
 
