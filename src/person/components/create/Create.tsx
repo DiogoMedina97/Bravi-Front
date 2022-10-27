@@ -28,4 +28,5 @@ export const Create = () => {
 const initialValues: FormValues = {
   name: '',
   surname: '',
+  contacts: [],
 };
