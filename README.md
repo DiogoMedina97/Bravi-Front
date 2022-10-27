@@ -13,4 +13,4 @@ REACT_APP_API_URL=http://localhost:3000
 
 ## Executar
 - 1) Rodar `npm install`
-- 1) Rodar `npm start`
+- 2) Rodar `npm start`
