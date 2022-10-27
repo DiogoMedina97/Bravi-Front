@@ -34,19 +34,23 @@ export const FormikInput = <T extends FormikValues>({
 
         return (
           <Col {...colProps} className="mb-3">
-            <Form.Control
-              type={type}
-              placeholder={label}
-              name={name}
-              value={value}
-              onBlur={handleBlur}
-              onChange={handleChange}
-              isValid={isValid}
-              isInvalid={isInvalid}
-            />
-            <Form.Control.Feedback type="invalid">
-              {error}
-            </Form.Control.Feedback>
+            <Form.Group controlId={`input_${name}`}>
+              <Form.Label>{label}</Form.Label>
+              <Form.Control
+                type={type}
+                placeholder={label}
+                id={`input_${name}`}
+                name={name}
+                value={value}
+                onBlur={handleBlur}
+                onChange={handleChange}
+                isValid={isValid}
+                isInvalid={isInvalid}
+              />
+              <Form.Control.Feedback type="invalid">
+                {error}
+              </Form.Control.Feedback>
+            </Form.Group>
           </Col>
         );
       }}
@@ -83,22 +87,26 @@ export const FormikSelect = <T extends FormikValues>({
 
         return (
           <Col {...colProps} className="mb-3">
-            <Form.Select
-              name={name}
-              value={value}
-              onBlur={handleBlur}
-              onChange={handleChange}
-              isValid={isValid}
-              isInvalid={isInvalid}
-            >
-              <option hidden>{label}</option>
-              {options.map(({ label, value }) => (
-                <option value={value}>{label}</option>
-              ))}
-            </Form.Select>
-            <Form.Control.Feedback type="invalid">
-              {error}
-            </Form.Control.Feedback>
+            <Form.Group controlId={`input_${name}`}>
+              <Form.Label>{label}</Form.Label>
+              <Form.Select
+                id={`input_${name}`}
+                name={name}
+                value={value}
+                onBlur={handleBlur}
+                onChange={handleChange}
+                isValid={isValid}
+                isInvalid={isInvalid}
+              >
+                <option hidden>{label}</option>
+                {options.map(({ label, value }) => (
+                  <option value={value}>{label}</option>
+                ))}
+              </Form.Select>
+              <Form.Control.Feedback type="invalid">
+                {error}
+              </Form.Control.Feedback>
+            </Form.Group>
           </Col>
         );
       }}
